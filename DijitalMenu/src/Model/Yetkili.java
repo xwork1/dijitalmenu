@@ -3,14 +3,14 @@ package Model;
 public class Yetkili {
 	
 	private int id;
-	String username,password,name;
+	String username,password,logged;
 	
 	
-	public Yetkili(int id, String username, String password, String name) {
+	public Yetkili(int id, String username, String password, String logged) {
 		this.id = id;
 		this.username = username;
 		this.password = password;
-		this.name = name;
+		this.logged = logged;
 	}
 	public Yetkili() {}
 	
@@ -32,11 +32,11 @@ public class Yetkili {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getName() {
-		return name;
+	public String getLogged() {
+		return logged;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setName(String logged) {
+		this.logged = logged;
 	}
 	
 	

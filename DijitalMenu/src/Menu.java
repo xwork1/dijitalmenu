@@ -59,7 +59,7 @@ public class Menu extends JFrame {
 	@SuppressWarnings("deprecation")
 	public Menu() {
 		setResizable(false);
-		setTitle("Dijital Men\u00FC");
+		setTitle("Dijital Menu");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 720, 420);
 		xw = new JPanel();
@@ -88,7 +88,7 @@ public class Menu extends JFrame {
 		eturunleri.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                new AnaYemekGUI().show();
+                new EtlerGUI().show();
             }
         });
 		
@@ -169,7 +169,7 @@ public class Menu extends JFrame {
 		txt_username.setEnabled(false);
 		txt_username.setEditable(false);
 		txt_username.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		txt_username.setText("Yetkili Giri\u015F:");
+		txt_username.setText("Yetkili Giris");
 		panel.add(txt_username);
 		
 		JTextPane txt_pass = new JTextPane();
@@ -178,10 +178,10 @@ public class Menu extends JFrame {
 		txt_pass.setEnabled(false);
 		txt_pass.setEditable(false);
 		txt_pass.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		txt_pass.setText("\u015Eifre:");
+		txt_pass.setText("Sifre:");
 		panel.add(txt_pass);
 		
-		JButton btnLogin = new JButton("Giri\u015F Yap");
+		JButton btnLogin = new JButton("Giris Yap");
 			btnLogin.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					if(fld_user.getText().length() == 0 || fld_pass.getText().length() == 0) {
@@ -191,15 +191,20 @@ public class Menu extends JFrame {
 						Connection con = conn.connDb();
 						try {
 							Statement st = con.createStatement();
-							ResultSet rs = st.executeQuery("SELECT * From user");
+							ResultSet rs = st.executeQuery("SELECT * From yetkili");
 							while(rs.next()) {
 								if(fld_user.getText().equals(rs.getString("username")) && fld_pass.getText().equals(rs.getString("password"))) {}
 								Yetkili admin = new Yetkili();
 								admin.setId(rs.getInt("id"));
 								admin.setUsername(rs.getString("username"));
 								admin.setPassword(rs.getString("password"));
-								admin.setName(rs.getString("name"));			
-								System.out.println(admin.getName());
+								admin.setName(rs.getString("logged"));			
+								System.out.println(admin.getLogged());
+								
+							}
+							if ("System.out.println(admin.getLogged()" != null) {
+								dispose();
+								new LoginGUI().setVisible(true);
 							}
 						} catch (SQLException e) {
 							e.printStackTrace();
