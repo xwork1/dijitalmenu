@@ -11,12 +11,13 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
--- tablo yapısı dökülüyor dijitalmenu.kategori
-CREATE TABLE IF NOT EXISTS `kategori` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `kategori_id` varchar(255) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+-- dijitalmenu.kampanyalar: ~3 rows (yaklaşık) tablosu için veriler indiriliyor
+/*!40000 ALTER TABLE `kampanyalar` DISABLE KEYS */;
+INSERT INTO `kampanyalar` (`id`, `kampanya_adi`, `kampanya_fiyati`, `kategori_id`) VALUES
+	(5, 'USKUMRU %20', '20', 2),
+	(6, 'KÖFTE %25', '15', 1),
+	(7, 'BROWNİ %20', '12', 6);
+/*!40000 ALTER TABLE `kampanyalar` ENABLE KEYS */;
 
 -- dijitalmenu.kategori: ~6 rows (yaklaşık) tablosu için veriler indiriliyor
 /*!40000 ALTER TABLE `kategori` DISABLE KEYS */;
@@ -29,35 +30,32 @@ INSERT INTO `kategori` (`id`, `kategori_id`) VALUES
 	(6, 'TATLI');
 /*!40000 ALTER TABLE `kategori` ENABLE KEYS */;
 
--- tablo yapısı dökülüyor dijitalmenu.yemekler
-CREATE TABLE IF NOT EXISTS `yemekler` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `yemekAdi` varchar(255) NOT NULL,
-  `fiyati` varchar(255) NOT NULL,
-  `kategori_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+-- dijitalmenu.sepet: ~4 rows (yaklaşık) tablosu için veriler indiriliyor
+/*!40000 ALTER TABLE `sepet` DISABLE KEYS */;
+INSERT INTO `sepet` (`sepet_id`, `yemekadi`, `yemekfiyati`) VALUES
+	(1, 'CİĞER', '24'),
+	(2, 'PİYAZ', '14'),
+	(3, 'Mantar Graten', '16'),
+	(4, 'Milföylü Biber Sarma', '10');
+/*!40000 ALTER TABLE `sepet` ENABLE KEYS */;
 
--- dijitalmenu.yemekler: ~5 rows (yaklaşık) tablosu için veriler indiriliyor
+-- dijitalmenu.yemekler: ~11 rows (yaklaşık) tablosu için veriler indiriliyor
 /*!40000 ALTER TABLE `yemekler` DISABLE KEYS */;
 INSERT INTO `yemekler` (`id`, `yemekAdi`, `fiyati`, `kategori_id`) VALUES
-	(13, 'adana', '25', 1),
-	(14, 'IZGARA', '30', 1),
-	(15, 'KUSBASI', '33', 1),
-	(16, 'sac kavurma', '40', 1),
-	(17, 'bonfile', '40', 1);
+	(26, 'KEBAB', '25', 1),
+	(27, 'USKUMRU', '25', 2),
+	(28, 'KOLA', '5', 4),
+	(30, 'PİYAZ', '14', 3),
+	(31, 'CİĞER', '24', 1),
+	(32, 'KÖFTE', '20', 1),
+	(49, 'BROWNİ', '15', 6),
+	(51, 'SÜTLAÇ', '7', 6),
+	(52, 'Mantar Graten', '16', 5),
+	(53, 'Sigara Böreği', '12', 5),
+	(54, 'Milföylü Biber Sarma', '10', 5);
 /*!40000 ALTER TABLE `yemekler` ENABLE KEYS */;
 
--- tablo yapısı dökülüyor dijitalmenu.yetkili
-CREATE TABLE IF NOT EXISTS `yetkili` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(255) NOT NULL DEFAULT '0',
-  `password` varchar(255) NOT NULL DEFAULT '0',
-  `logged` varchar(255) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-
--- dijitalmenu.yetkili: ~1 rows (yaklaşık) tablosu için veriler indiriliyor
+-- dijitalmenu.yetkili: ~0 rows (yaklaşık) tablosu için veriler indiriliyor
 /*!40000 ALTER TABLE `yetkili` DISABLE KEYS */;
 INSERT INTO `yetkili` (`id`, `username`, `password`, `logged`) VALUES
 	(1, 'admin', '0000', 'giris onaylandi');
