@@ -64,11 +64,14 @@ public class TatliGUI extends JFrame {
             ResultSet rs = st.executeQuery("SELECT * FROM yemekler where kategori_id = '" + 6 + "'");
             int i = 0;
             JToggleButton[] btnTatlilist = new JToggleButton[50];
+            int[] dizi = new int[50];
+            String[] dizi2 = new String[50];
             int h1 = 1;
             int h,w=-190;
             while (rs.next()) {
             	btnTatlilist[i] = new JToggleButton(rs.getString("yemekAdi")+"("+rs.getInt("fiyati")+")");
-               
+                dizi[i] = rs.getInt("fiyati");
+                dizi2[i] = rs.getString("yemekAdi");
                 if (i % 3 == 0) {
                     System.out.println("ok");
                     h1 = 1;
@@ -79,13 +82,28 @@ public class TatliGUI extends JFrame {
                 
                btnTatlilist[i].setBounds(w, h, 190, 88);
                 xw.add(btnTatlilist[i]);
+               final int p = i;
+                btnTatlilist[i].addActionListener(new ActionListener() {
+                	
+                    public void actionPerformed(ActionEvent arg0) {
+                    	System.out.println(btnTatlilist[p].getText());
+                       try {
+						Statement st2 = c.createStatement();
+						st2.executeUpdate("INSERT INTO sepet (yemekadi,yemekfiyati) VALUES ('"+dizi2[p]+"','"+dizi[p]+"')");
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+                       
+                    }
+                });
                 i++;
                 h1+=10;
             }
         } catch (SQLException ex) {
             Logger.getLogger(TatliGUI.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
         JButton btnBackButton = new JButton("Geri");
         btnBackButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {

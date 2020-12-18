@@ -39,7 +39,4 @@ public class Yetkili {
 		this.logged = logged;
 	}
 	
-	
-	
-
 }

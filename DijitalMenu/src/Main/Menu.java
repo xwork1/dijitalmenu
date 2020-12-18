@@ -38,14 +38,12 @@ import View.TatliGUI;
 
 public class Menu extends JFrame {
 
+	
 	private JPanel xw;
 	private JTextField fld_user;
 	private JPasswordField fld_pass;
 	private DBConnection conn = new  DBConnection();
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -59,11 +57,10 @@ public class Menu extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
+
 	@SuppressWarnings("deprecation")
 	public Menu() {
+		setBackground(SystemColor.window);
 		setResizable(false);
 		setTitle("Dijital Menu");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -89,7 +86,7 @@ public class Menu extends JFrame {
 		JButton eturunleri = new JButton("ET URUNLERI");
 		eturunleri.setBounds(10, 10, 135, 127);
 		eturunleri.setForeground(Color.BLACK);
-		eturunleri.setBackground(SystemColor.menu);
+		eturunleri.setBackground(Color.WHITE);
 		xw_panel.add(eturunleri);
 		eturunleri.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -100,10 +97,12 @@ public class Menu extends JFrame {
 		
 		
 		JButton btnGarson = new JButton("Garson Cagir");
+		btnGarson.setBackground(Color.WHITE);
 		btnGarson.setBounds(444, 10, 205, 42);
 		xw_panel.add(btnGarson);
 		
 		JButton btnPay = new JButton("Odeme Yap");
+		btnPay.setBackground(Color.WHITE);
 		btnPay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
@@ -112,6 +111,7 @@ public class Menu extends JFrame {
 		xw_panel.add(btnPay);
 		
 		JButton btnWatch = new JButton("Siparis izle");
+		btnWatch.setBackground(Color.WHITE);
 		btnWatch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
@@ -120,6 +120,8 @@ public class Menu extends JFrame {
 		xw_panel.add(btnWatch);
 		
 		JButton btnTatli = new JButton("TATLILAR");
+		btnTatli.setForeground(Color.BLACK);
+		btnTatli.setBackground(Color.WHITE);
 		btnTatli.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
@@ -130,6 +132,8 @@ public class Menu extends JFrame {
 		xw_panel.add(btnTatli);
 		
 		JButton btnDrink = new JButton("ICECEKLER");
+		btnDrink.setForeground(Color.BLACK);
+		btnDrink.setBackground(Color.WHITE);
 		btnDrink.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
@@ -140,6 +144,7 @@ public class Menu extends JFrame {
 		xw_panel.add(btnDrink);
 		
 		JButton btnAraSicak = new JButton("ARA SICAK");
+		btnAraSicak.setBackground(Color.WHITE);
 		btnAraSicak.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent arg0) {
 			dispose();
@@ -150,18 +155,21 @@ public class Menu extends JFrame {
 		xw_panel.add(btnAraSicak);
 		
 		JButton btnSalata = new JButton("SALATALAR");
+		btnSalata.setForeground(Color.BLACK);
+		btnSalata.setBackground(Color.WHITE);
 		btnSalata.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
                 new SalataGUI().show();
 			}
 		});
-		btnSalata.setBounds(144, 10, 135, 127);
+		btnSalata.setBounds(144, 136, 135, 127);
 		xw_panel.add(btnSalata);
 		
 		JButton btnDeniz = new JButton("DENIZ URUNLERI");
-		btnDeniz.setBounds(144, 136, 135, 127);
-		btnDeniz.setBackground(SystemColor.menu);
+		btnDeniz.setForeground(Color.BLACK);
+		btnDeniz.setBounds(144, 10, 135, 127);
+		btnDeniz.setBackground(Color.WHITE);
 		xw_panel.add(btnDeniz);
 		btnDeniz.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -171,10 +179,12 @@ public class Menu extends JFrame {
         });
 		
 		JButton btnKmpny = new JButton("Kampanyalar");
+		btnKmpny.setBackground(Color.WHITE);
 		btnKmpny.setBounds(444, 166, 205, 42);
 		xw_panel.add(btnKmpny);
 		
 		JButton btnSepet = new JButton("Sepetim");
+		btnSepet.setBackground(Color.WHITE);
 		btnSepet.setBounds(444, 221, 205, 42);
 		xw_panel.add(btnSepet);
 		
@@ -225,19 +235,19 @@ public class Menu extends JFrame {
 							Statement st = con.createStatement();
 							ResultSet rs = st.executeQuery("SELECT * From yetkili");
 							while(rs.next()) {
-								if(fld_user.getText().equals(rs.getString("username")) && fld_pass.getText().equals(rs.getString("password"))) {}
+								if(fld_user.getText().equals(rs.getString("username")) && fld_pass.getText().equals(rs.getString("password"))) {
 								Yetkili admin = new Yetkili();
 								admin.setId(rs.getInt("id"));
 								admin.setUsername(rs.getString("username"));
 								admin.setPassword(rs.getString("password"));
 								admin.setName(rs.getString("logged"));			
-								System.out.println(admin.getLogged());
-								
-							}
-							if ("System.out.println(admin.getLogged()" != null) {
+								System.out.println(admin.getLogged());		
 								dispose();
 								new LoginGUI().setVisible(true);
+								}					
 							}
+							
+							
 						} catch (SQLException e) {
 							e.printStackTrace();
 						}
