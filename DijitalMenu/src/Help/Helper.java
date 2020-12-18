@@ -10,6 +10,8 @@ public class Helper {
 		switch(str) {
 		case "fill":
 			msg = "Lütfen tüm alanlarý doldurunuz. Varsayýlan kullanýcý adý: admin varsayýlan þifre:0000";
+		case "fill2":
+			msg = "*************************************************************************************";
 			break;
 		default:
 			msg = str;

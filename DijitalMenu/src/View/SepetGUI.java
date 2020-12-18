@@ -101,7 +101,7 @@ public class SepetGUI extends JFrame {
     		while(rs.next()){
     			yemekData[0] = rs.getInt("sepet_id");
     			yemekData[1] = rs.getString("yemekadi");
-    			yemekData[2] = rs.getString("yemekfiyati");
+    			yemekData[2] = rs.getString("yemekfiyati")+" TL";
     			yemekModel.addRow(yemekData);
     		}
     		table_sepet.setModel(yemekModel);

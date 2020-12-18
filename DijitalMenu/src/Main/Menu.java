@@ -33,6 +33,7 @@ import View.EtlerGUI;
 import View.IcecekGUI;
 import View.LoginGUI;
 import View.SalataGUI;
+import View.SepetGUI;
 import View.TatliGUI;
 
 
@@ -184,6 +185,12 @@ public class Menu extends JFrame {
 		xw_panel.add(btnKmpny);
 		
 		JButton btnSepet = new JButton("Sepetim");
+		btnSepet.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				dispose();
+                new SepetGUI().show();
+			}
+		});
 		btnSepet.setBackground(Color.WHITE);
 		btnSepet.setBounds(444, 221, 205, 42);
 		xw_panel.add(btnSepet);

@@ -69,7 +69,7 @@ public class IcecekGUI extends JFrame {
             int h1 = 1;
             int h,w=-190;
             while (rs.next()) {
-            	btniceceklist[i] = new JToggleButton(rs.getString("yemekAdi")+"("+rs.getInt("fiyati")+")");
+            	btniceceklist[i] = new JToggleButton(rs.getString("yemekAdi")+"("+rs.getInt("fiyati")+" TL)");
                 dizi[i] = rs.getInt("fiyati");
                 dizi2[i] = rs.getString("yemekAdi");
                 if (i % 3 == 0) {

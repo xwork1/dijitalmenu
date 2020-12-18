@@ -69,7 +69,7 @@ public class ArasicakGUI extends JFrame {
             int h1 = 1;
             int h,w=-190;
             while (rs.next()) {
-            	btnSicaklarlist[i] = new JToggleButton(rs.getString("yemekAdi")+"("+rs.getInt("fiyati")+")");
+            	btnSicaklarlist[i] = new JToggleButton(rs.getString("yemekAdi")+"("+rs.getInt("fiyati")+" TL)");
                 dizi[i] = rs.getInt("fiyati");
                 dizi2[i] = rs.getString("yemekAdi");
                 if (i % 3 == 0) {

@@ -67,7 +67,7 @@ public class BalikGUI extends JFrame {
             int h1 = 1;
             int h,w=-190;
             while (rs.next()) {
-            	btnBaliklist[i] = new JToggleButton(rs.getString("yemekAdi")+"("+rs.getInt("fiyati")+")");
+            	btnBaliklist[i] = new JToggleButton(rs.getString("yemekAdi")+"("+rs.getInt("fiyati")+" TL)");
                
                 if (i % 3 == 0) {
                     System.out.println("ok");
