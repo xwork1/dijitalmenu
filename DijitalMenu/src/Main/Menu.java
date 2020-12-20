@@ -11,6 +11,7 @@ import Help.Helper;
 
 import java.awt.Color;
 import javax.swing.JToggleButton;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
@@ -23,6 +24,8 @@ import javax.swing.UIManager;
 import java.awt.SystemColor;
 import javax.swing.JTextField;
 import java.awt.Font;
+import java.awt.Image;
+
 import javax.swing.JPasswordField;
 import javax.swing.JTextPane;
 import Help.*;
@@ -31,6 +34,7 @@ import View.ArasicakGUI;
 import View.BalikGUI;
 import View.EtlerGUI;
 import View.IcecekGUI;
+import View.KampanyaGUI;
 import View.LoginGUI;
 import View.SalataGUI;
 import View.SepetGUI;
@@ -85,6 +89,8 @@ public class Menu extends JFrame {
 		xw_panel.setLayout(null);
 		
 		JButton eturunleri = new JButton("ET URUNLERI");
+		Image img = new ImageIcon(this.getClass().getResource("/et.png")).getImage();
+		eturunleri.setIcon(new ImageIcon(img));
 		eturunleri.setBounds(10, 10, 135, 127);
 		eturunleri.setForeground(Color.BLACK);
 		eturunleri.setBackground(Color.WHITE);
@@ -180,6 +186,12 @@ public class Menu extends JFrame {
         });
 		
 		JButton btnKmpny = new JButton("Kampanyalar");
+		btnKmpny.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				dispose();
+                new KampanyaGUI().show();
+			}
+		});
 		btnKmpny.setBackground(Color.WHITE);
 		btnKmpny.setBounds(444, 166, 205, 42);
 		xw_panel.add(btnKmpny);

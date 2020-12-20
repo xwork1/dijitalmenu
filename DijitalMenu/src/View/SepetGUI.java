@@ -77,7 +77,6 @@ public class SepetGUI extends JFrame {
 		panel.setLayout(null);
 		
 		JButton btnSatinal = new JButton("Siparisi Onayla");
-		
 		btnSatinal.setBounds(594, 10, 125, 21);
 		panel.add(btnSatinal);
 		
@@ -122,17 +121,14 @@ public class SepetGUI extends JFrame {
     btnSatinal.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent arg0) {
 			Connection con2 = conn.connDb();
-			DefaultTableModel model = (DefaultTableModel) table_sepet.getModel();
-	        int row = table_sepet.getSelectedRow();
-	        int eve = (int) table_sepet.getModel().getValueAt(row, 0);
 	        try {
 	        	Statement sorgu = con2.createStatement();
-	        	sorgu.executeUpdate("DELETE FROM sepet where id= "+eve);
-	        	model.removeRow(table_sepet.getSelectedRow());
-	        }catch(Exception e) {
+	        	sorgu.executeUpdate("DELETE FROM sepet");
+	        	System.out.println("Siparis Onaylandi");
+	        }catch(Exception e) {	        
 	        	System.out.println(e);
 	        }
-			
+	       
 		}
 	});
 	}
