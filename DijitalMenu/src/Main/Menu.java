@@ -39,6 +39,8 @@ import View.LoginGUI;
 import View.SalataGUI;
 import View.SepetGUI;
 import View.TatliGUI;
+import javax.swing.border.BevelBorder;
+import java.awt.ComponentOrientation;
 
 
 public class Menu extends JFrame {
@@ -65,13 +67,11 @@ public class Menu extends JFrame {
 
 	@SuppressWarnings("deprecation")
 	public Menu() {
-		setBackground(SystemColor.window);
 		setResizable(false);
 		setTitle("Dijital Menu");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 720, 420);
 		xw = new JPanel();
-		xw.setBackground(Color.WHITE);
 		xw.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(xw);
 		xw.setLayout(null);
@@ -83,7 +83,6 @@ public class Menu extends JFrame {
 		xw.add(xw_tabpanel);
 		
 		JPanel xw_panel = new JPanel();
-		xw_panel.setBackground(Color.WHITE);
 		xw_panel.setToolTipText("");
 		xw_tabpanel.addTab("Menü", null, xw_panel, null);
 		xw_panel.setLayout(null);
@@ -93,7 +92,6 @@ public class Menu extends JFrame {
 		eturunleri.setIcon(new ImageIcon(img));
 		eturunleri.setBounds(10, 10, 135, 127);
 		eturunleri.setForeground(Color.BLACK);
-		eturunleri.setBackground(Color.WHITE);
 		xw_panel.add(eturunleri);
 		eturunleri.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -104,12 +102,10 @@ public class Menu extends JFrame {
 		
 		
 		JButton btnGarson = new JButton("Garson Cagir");
-		btnGarson.setBackground(Color.WHITE);
 		btnGarson.setBounds(444, 10, 205, 42);
 		xw_panel.add(btnGarson);
 		
 		JButton btnPay = new JButton("Odeme Yap");
-		btnPay.setBackground(Color.WHITE);
 		btnPay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
@@ -118,7 +114,6 @@ public class Menu extends JFrame {
 		xw_panel.add(btnPay);
 		
 		JButton btnWatch = new JButton("Siparis izle");
-		btnWatch.setBackground(Color.WHITE);
 		btnWatch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
@@ -130,21 +125,19 @@ public class Menu extends JFrame {
 		Image tatliimg = new ImageIcon(this.getClass().getResource("/tatlý.png")).getImage();
 		btnTatli.setIcon(new ImageIcon(tatliimg));
 		btnTatli.setForeground(Color.BLACK);
-		btnTatli.setBackground(Color.WHITE);
 		btnTatli.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
 	            new TatliGUI().show();
 			}
 		});
-		btnTatli.setBounds(278, 10, 135, 127);
+		btnTatli.setBounds(278, 10, 143, 127);
 		xw_panel.add(btnTatli);
 		
 		JButton btnDrink = new JButton("ICECEKLER");
-		Image drinkimg = new ImageIcon(this.getClass().getResource("/icecek.jpg")).getImage();
+		Image drinkimg = new ImageIcon(this.getClass().getResource("/icecek.png")).getImage();
 		btnDrink.setIcon(new ImageIcon(drinkimg));
 		btnDrink.setForeground(Color.BLACK);
-		btnDrink.setBackground(Color.WHITE);
 		btnDrink.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
@@ -155,21 +148,21 @@ public class Menu extends JFrame {
 		xw_panel.add(btnDrink);
 		
 		JButton btnAraSicak = new JButton("ARA SICAK");
-		Image sicaklarimg = new ImageIcon(this.getClass().getResource("/arasýcak.jpg")).getImage();
+		Image sicaklarimg = new ImageIcon(this.getClass().getResource("/arasýcak.png")).getImage();
 		btnAraSicak.setIcon(new ImageIcon(sicaklarimg));
-		btnAraSicak.setBackground(Color.WHITE);
 		btnAraSicak.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent arg0) {
 			dispose();
             new ArasicakGUI().show();
 		}
 	});
-		btnAraSicak.setBounds(278, 136, 135, 127);
+		btnAraSicak.setBounds(278, 136, 143, 127);
 		xw_panel.add(btnAraSicak);
 		
 		JButton btnSalata = new JButton("SALATALAR");
+		Image salataimg = new ImageIcon(this.getClass().getResource("/salata.png")).getImage();
+		btnSalata.setIcon(new ImageIcon(salataimg));
 		btnSalata.setForeground(Color.BLACK);
-		btnSalata.setBackground(Color.WHITE);
 		btnSalata.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
@@ -184,7 +177,6 @@ public class Menu extends JFrame {
 		btnDeniz.setIcon(new ImageIcon(balikimg));
 		btnDeniz.setForeground(Color.BLACK);
 		btnDeniz.setBounds(144, 10, 135, 127);
-		btnDeniz.setBackground(Color.WHITE);
 		xw_panel.add(btnDeniz);
 		btnDeniz.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -200,7 +192,6 @@ public class Menu extends JFrame {
                 new KampanyaGUI().show();
 			}
 		});
-		btnKmpny.setBackground(Color.WHITE);
 		btnKmpny.setBounds(444, 166, 205, 42);
 		xw_panel.add(btnKmpny);
 		
@@ -211,18 +202,15 @@ public class Menu extends JFrame {
                 new SepetGUI().show();
 			}
 		});
-		btnSepet.setBackground(Color.WHITE);
 		btnSepet.setBounds(444, 221, 205, 42);
 		xw_panel.add(btnSepet);
 		
 		JPanel panel = new JPanel();
-		panel.setBackground(Color.WHITE);
 		xw_tabpanel.addTab("Yetkili", null, panel, null);
 		panel.setLayout(null);
 		
 		fld_user = new JTextField();
 		fld_user.setBounds(214, 90, 252, 33);
-		fld_user.setToolTipText("");
 		fld_user.setFont(new Font("Yu Gothic Medium", Font.PLAIN, 16));
 		fld_user.setColumns(10);
 		fld_user.setBackground(Color.WHITE);
@@ -234,7 +222,6 @@ public class Menu extends JFrame {
 		
 		JTextPane txt_username = new JTextPane();
 		txt_username.setBounds(118, 90, 97, 33);
-		txt_username.setBackground(Color.WHITE);
 		txt_username.setEnabled(false);
 		txt_username.setEditable(false);
 		txt_username.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -243,7 +230,6 @@ public class Menu extends JFrame {
 		
 		JTextPane txt_pass = new JTextPane();
 		txt_pass.setBounds(166, 165, 49, 32);
-		txt_pass.setBackground(Color.WHITE);
 		txt_pass.setEnabled(false);
 		txt_pass.setEditable(false);
 		txt_pass.setFont(new Font("Tahoma", Font.PLAIN, 16));
