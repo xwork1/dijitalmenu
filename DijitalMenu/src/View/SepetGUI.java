@@ -18,6 +18,13 @@ import javax.swing.JTable;
 import javax.swing.JTabbedPane;
 import javax.swing.JScrollPane;
 import java.awt.Color;
+import javax.swing.JTextPane;
+import java.awt.Font;
+import javax.swing.JTextField;
+import javax.swing.JList;
+import javax.swing.JLabel;
+import javax.swing.JComboBox;
+import javax.swing.JEditorPane;
 
 
 
@@ -28,6 +35,7 @@ public class SepetGUI extends JFrame {
 	private JTable table_sepet;
 	private DefaultTableModel yemekModel = new DefaultTableModel();
 	private Object[] yemekData = {"ID","Yemek Adý","Fiyati"};
+	private JTextField textField;
 	
 	public void guncelle() throws SQLException {
 		
@@ -72,6 +80,7 @@ public class SepetGUI extends JFrame {
 		contentPane.add(xw);
 		
 		JPanel panel = new JPanel();
+		panel.setForeground(Color.BLACK);
 		panel.setBackground(Color.WHITE);
 		xw.addTab("Sepet", null, panel, null);
 		panel.setLayout(null);
@@ -117,6 +126,57 @@ public class SepetGUI extends JFrame {
 	});
 		btnBack.setBounds(594, 246, 74, 19);
 		panel.add(btnBack);
+		
+		JLabel lblNewLabel = new JLabel("TOPLAM TUTAR");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNewLabel.setBounds(604, 40, 104, 33);
+		panel.add(lblNewLabel);
+		
+		Connection con6 = conn.connDb();
+		JEditorPane editorPane = new JEditorPane();
+		editorPane.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 16));
+		editorPane.setForeground(Color.BLACK);
+		editorPane.setBackground(Color.WHITE);
+		try {
+			Statement st6 = con6.createStatement();
+            ResultSet rs = st6.executeQuery("SELECT SUM(yemekfiyati) AS fiyat FROM sepet");
+            while(rs.next()) {
+    			String yemekfiyati = rs.getString("fiyat")+"TL";
+    			editorPane.setText(yemekfiyati);
+    		}
+		} catch (Exception e) {	
+		}
+		editorPane.setBounds(625, 69, 47, 33);
+		panel.add(editorPane);
+		
+		JButton btnDelButton = new JButton("Sil");
+		btnDelButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Connection con2 = conn.connDb();
+				DefaultTableModel model = (DefaultTableModel) table_sepet.getModel();
+		        int row = table_sepet.getSelectedRow();
+		        int eve = (int) table_sepet.getModel().getValueAt(row, 0);
+		        try {
+		        	Statement sorgu = con2.createStatement();
+		        	sorgu.executeUpdate("DELETE FROM sepet where sepet_id= "+eve);
+		        	model.removeRow(table_sepet.getSelectedRow());
+		        	ResultSet rs = sorgu.executeQuery("SELECT SUM(yemekfiyati) AS fiyat FROM sepet");
+		            while(rs.next()) {
+		    			String yemekfiyati = rs.getString("fiyat")+"TL";
+		    			editorPane.setText(yemekfiyati);
+		    		}
+		        }catch(Exception e) {
+		        	System.out.println(e);
+		        }
+				
+			
+			}
+		});
+		btnDelButton.setBounds(594, 116, 55, 46);
+		panel.add(btnDelButton);
+		
+		
+		
 	
     btnSatinal.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent arg0) {
@@ -124,7 +184,7 @@ public class SepetGUI extends JFrame {
 	        try {
 	        	Statement sorgu = con2.createStatement();
 	        	sorgu.executeUpdate("DELETE FROM sepet");
-	        	System.out.println("Siparis Onaylandi");
+	        	Helper.showMsg("fill2");
 	        }catch(Exception e) {	        
 	        	System.out.println(e);
 	        }

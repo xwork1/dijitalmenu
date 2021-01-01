@@ -127,6 +127,8 @@ public class Menu extends JFrame {
 		xw_panel.add(btnWatch);
 		
 		JButton btnTatli = new JButton("TATLILAR");
+		Image tatliimg = new ImageIcon(this.getClass().getResource("/tatlý.png")).getImage();
+		btnTatli.setIcon(new ImageIcon(tatliimg));
 		btnTatli.setForeground(Color.BLACK);
 		btnTatli.setBackground(Color.WHITE);
 		btnTatli.addActionListener(new ActionListener() {
@@ -139,6 +141,8 @@ public class Menu extends JFrame {
 		xw_panel.add(btnTatli);
 		
 		JButton btnDrink = new JButton("ICECEKLER");
+		Image drinkimg = new ImageIcon(this.getClass().getResource("/icecek.jpg")).getImage();
+		btnDrink.setIcon(new ImageIcon(drinkimg));
 		btnDrink.setForeground(Color.BLACK);
 		btnDrink.setBackground(Color.WHITE);
 		btnDrink.addActionListener(new ActionListener() {
@@ -151,6 +155,8 @@ public class Menu extends JFrame {
 		xw_panel.add(btnDrink);
 		
 		JButton btnAraSicak = new JButton("ARA SICAK");
+		Image sicaklarimg = new ImageIcon(this.getClass().getResource("/arasýcak.jpg")).getImage();
+		btnAraSicak.setIcon(new ImageIcon(sicaklarimg));
 		btnAraSicak.setBackground(Color.WHITE);
 		btnAraSicak.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent arg0) {
@@ -174,6 +180,8 @@ public class Menu extends JFrame {
 		xw_panel.add(btnSalata);
 		
 		JButton btnDeniz = new JButton("DENIZ URUNLERI");
+		Image balikimg = new ImageIcon(this.getClass().getResource("/balýk.png")).getImage();
+		btnDeniz.setIcon(new ImageIcon(balikimg));
 		btnDeniz.setForeground(Color.BLACK);
 		btnDeniz.setBounds(144, 10, 135, 127);
 		btnDeniz.setBackground(Color.WHITE);
@@ -263,7 +271,9 @@ public class Menu extends JFrame {
 								System.out.println(admin.getLogged());		
 								dispose();
 								new LoginGUI().setVisible(true);
-								}					
+								}else {
+									Helper.showMsg("fill3");
+								}
 							}
 							
 							

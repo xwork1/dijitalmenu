@@ -11,12 +11,13 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
--- dijitalmenu.kampanyalar: ~3 rows (yaklaşık) tablosu için veriler indiriliyor
+-- dijitalmenu.kampanyalar: ~2 rows (yaklaşık) tablosu için veriler indiriliyor
 /*!40000 ALTER TABLE `kampanyalar` DISABLE KEYS */;
 INSERT INTO `kampanyalar` (`id`, `kampanya_adi`, `kampanya_fiyati`, `kategori_id`) VALUES
 	(5, 'USKUMRU %20', '20', 2),
 	(6, 'KÖFTE %25', '15', 1),
-	(7, 'BROWNİ %20', '12', 6);
+	(7, 'BROWNİ %20', '12', 6),
+	(8, 'CİĞER %10', '21.6', 1);
 /*!40000 ALTER TABLE `kampanyalar` ENABLE KEYS */;
 
 -- dijitalmenu.kategori: ~6 rows (yaklaşık) tablosu için veriler indiriliyor
@@ -30,18 +31,14 @@ INSERT INTO `kategori` (`id`, `kategori_id`) VALUES
 	(6, 'TATLI');
 /*!40000 ALTER TABLE `kategori` ENABLE KEYS */;
 
--- dijitalmenu.sepet: ~4 rows (yaklaşık) tablosu için veriler indiriliyor
+-- dijitalmenu.sepet: ~0 rows (yaklaşık) tablosu için veriler indiriliyor
 /*!40000 ALTER TABLE `sepet` DISABLE KEYS */;
-INSERT INTO `sepet` (`sepet_id`, `yemekadi`, `yemekfiyati`) VALUES
-	(1, 'CİĞER', '24'),
-	(2, 'PİYAZ', '14'),
-	(3, 'Mantar Graten', '16'),
-	(4, 'Milföylü Biber Sarma', '10');
 /*!40000 ALTER TABLE `sepet` ENABLE KEYS */;
 
 -- dijitalmenu.yemekler: ~11 rows (yaklaşık) tablosu için veriler indiriliyor
 /*!40000 ALTER TABLE `yemekler` DISABLE KEYS */;
 INSERT INTO `yemekler` (`id`, `yemekAdi`, `fiyati`, `kategori_id`) VALUES
+	(1, 'HAMSİ', '20', 2),
 	(26, 'KEBAB', '25', 1),
 	(27, 'USKUMRU', '25', 2),
 	(28, 'KOLA', '5', 4),

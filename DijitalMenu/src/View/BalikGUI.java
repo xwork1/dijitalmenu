@@ -25,10 +25,7 @@ import java.util.logging.Logger;
 public class BalikGUI extends JFrame {
 
     private JPanel xw;
-
-    /**
-     * Launch the application.
-     */
+    
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -42,11 +39,9 @@ public class BalikGUI extends JFrame {
         });
     }
 
-    /**
-     * Create the frame.
-     */
+    
     public BalikGUI() {
-        setBackground(Color.LIGHT_GRAY);
+    	setBackground(Color.LIGHT_GRAY);
         setTitle("DENIZ URUNLERI");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 720, 420);
@@ -60,15 +55,18 @@ public class BalikGUI extends JFrame {
         Connection c = db.connDb();
 
         try {
-            Statement st = c.createStatement();
+        	Statement st = c.createStatement();
             ResultSet rs = st.executeQuery("SELECT * FROM yemekler where kategori_id = '" + 2 + "'");
             int i = 0;
             JToggleButton[] btnBaliklist = new JToggleButton[50];
+            int[] dizi = new int[50];
+            String[] dizi2 = new String[50];
             int h1 = 1;
             int h,w=-190;
             while (rs.next()) {
             	btnBaliklist[i] = new JToggleButton(rs.getString("yemekAdi")+"("+rs.getInt("fiyati")+" TL)");
-               
+                dizi[i] = rs.getInt("fiyati");
+                dizi2[i] = rs.getString("yemekAdi");
                 if (i % 3 == 0) {
                     System.out.println("ok");
                     h1 = 1;
@@ -79,13 +77,28 @@ public class BalikGUI extends JFrame {
                 
                btnBaliklist[i].setBounds(w, h, 190, 88);
                 xw.add(btnBaliklist[i]);
+               final int p = i;
+                btnBaliklist[i].addActionListener(new ActionListener() {
+                	
+                    public void actionPerformed(ActionEvent arg0) {
+                    	System.out.println(btnBaliklist[p].getText());
+                       try {
+						Statement st2 = c.createStatement();
+						st2.executeUpdate("INSERT INTO sepet (yemekadi,yemekfiyati) VALUES ('"+dizi2[p]+"','"+dizi[p]+"')");
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+                       
+                    }
+                });
                 i++;
                 h1+=10;
             }
         } catch (SQLException ex) {
-            Logger.getLogger(BalikGUI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TatliGUI.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
         JButton btnBackButton = new JButton("Geri");
         btnBackButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
