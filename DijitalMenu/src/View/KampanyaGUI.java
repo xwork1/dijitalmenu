@@ -46,6 +46,7 @@ public class KampanyaGUI extends JFrame {
      * Create the frame.
      */
     public KampanyaGUI() {
+    	setUndecorated(true);
         setBackground(Color.LIGHT_GRAY);
         setTitle("KAMPANYALAR");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

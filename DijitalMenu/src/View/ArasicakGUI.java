@@ -46,6 +46,7 @@ public class ArasicakGUI extends JFrame {
      * Create the frame.
      */
     public ArasicakGUI() {
+    	setUndecorated(true);
         setBackground(Color.LIGHT_GRAY);
         setTitle("ARASICAKLAR");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

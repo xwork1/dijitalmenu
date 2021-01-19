@@ -66,7 +66,7 @@ public class SepetGUI extends JFrame {
 	}
 	
 	public SepetGUI() {
-			
+		setUndecorated(true);	
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 768, 363);
 		contentPane = new JPanel();

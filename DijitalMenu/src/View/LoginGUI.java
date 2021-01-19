@@ -95,7 +95,7 @@ public void guncelle1() throws SQLException {
 	}
 
 	public LoginGUI() {
-			
+		setUndecorated(true);	
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 768, 363);
 		contentPane = new JPanel();

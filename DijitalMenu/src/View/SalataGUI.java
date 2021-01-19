@@ -46,6 +46,7 @@ public class SalataGUI extends JFrame {
      * Create the frame.
      */
     public SalataGUI() {
+    	setUndecorated(true);
         setBackground(Color.LIGHT_GRAY);
         setTitle("SALATALAR");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

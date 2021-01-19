@@ -46,6 +46,7 @@ public class TatliGUI extends JFrame {
      * Create the frame.
      */
     public TatliGUI() {
+    	setUndecorated(true);
         setBackground(Color.LIGHT_GRAY);
         setTitle("TATLILAR");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

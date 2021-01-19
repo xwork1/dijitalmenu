@@ -46,6 +46,7 @@ public class IcecekGUI extends JFrame {
      * Create the frame.
      */
     public IcecekGUI() {
+    	setUndecorated(true);
         setBackground(Color.LIGHT_GRAY);
         setTitle("ICECEKLER");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

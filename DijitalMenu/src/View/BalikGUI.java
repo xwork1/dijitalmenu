@@ -41,6 +41,7 @@ public class BalikGUI extends JFrame {
 
     
     public BalikGUI() {
+    	setUndecorated(true);
     	setBackground(Color.LIGHT_GRAY);
         setTitle("DENIZ URUNLERI");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

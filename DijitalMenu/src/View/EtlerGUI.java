@@ -46,6 +46,7 @@ public class EtlerGUI extends JFrame {
      * Create the frame.
      */
     public EtlerGUI() {
+    	setUndecorated(true);
         setBackground(Color.LIGHT_GRAY);
         setTitle("ET URUNLERI");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

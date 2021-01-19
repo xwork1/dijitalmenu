@@ -44,6 +44,7 @@ import java.awt.ComponentOrientation;
 import java.awt.Dialog.ModalExclusionType;
 import java.awt.Window.Type;
 import java.awt.Dimension;
+import javax.swing.JLabel;
 
 
 public class Menu extends JFrame {
@@ -70,8 +71,7 @@ public class Menu extends JFrame {
 
 	@SuppressWarnings("deprecation")
 	public Menu() {
-		setResizable(false);
-		setAutoRequestFocus(false);
+		setUndecorated(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBackground(new Color(165, 42, 42));
 		setTitle("Dijital Menu");
@@ -109,16 +109,18 @@ public class Menu extends JFrame {
 		
 		
 		JButton btnGarson = new JButton("Garson Cagir");
+		btnGarson.setIcon(new ImageIcon("C:\\Users\\OS-\\Desktop\\garson.png"));
+		btnGarson.setBounds(444, 10, 205, 42);
 		btnGarson.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Helper.showMsg("Sayýn müþterimiz en kýsa sürede garsonumuz sizinle ilgilenecektir.");
 			}
 		});
-		btnGarson.setBounds(444, 10, 205, 42);
 		btnGarson.setBackground(new Color(100, 149, 237));
 		xw_panel.add(btnGarson);
 		
 		JButton btnPay = new JButton("Odeme Yap");
+		btnPay.setIcon(new ImageIcon("C:\\Users\\OS-\\Desktop\\\u00F6deme.png"));
 		btnPay.setBounds(444, 62, 205, 42);
 		btnPay.setBackground(new Color(100, 149, 237));
 		btnPay.addActionListener(new ActionListener() {
@@ -128,6 +130,7 @@ public class Menu extends JFrame {
 		xw_panel.add(btnPay);
 		
 		JButton btnWatch = new JButton("Siparis izle");
+		btnWatch.setIcon(new ImageIcon("C:\\Users\\OS-\\Desktop\\izle.png"));
 		btnWatch.setBounds(444, 114, 205, 42);
 		btnWatch.setBackground(new Color(100, 149, 237));
 		btnWatch.addActionListener(new ActionListener() {
@@ -201,6 +204,7 @@ public class Menu extends JFrame {
         });
 		
 		JButton btnKmpny = new JButton("Kampanyalar");
+		btnKmpny.setIcon(new ImageIcon("C:\\Users\\OS-\\Desktop\\kampanya.png"));
 		btnKmpny.setBounds(444, 166, 205, 42);
 		btnKmpny.setBackground(new Color(100, 149, 237));
 		btnKmpny.addActionListener(new ActionListener() {
@@ -212,6 +216,7 @@ public class Menu extends JFrame {
 		xw_panel.add(btnKmpny);
 		
 		JButton btnSepet = new JButton("Sepetim");
+		btnSepet.setIcon(new ImageIcon("C:\\Users\\OS-\\Desktop\\sepet.png"));
 		btnSepet.setBounds(444, 221, 205, 42);
 		btnSepet.setBackground(new Color(100, 149, 237));
 		btnSepet.addActionListener(new ActionListener() {
