@@ -70,6 +70,7 @@ public class SepetGUI extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 768, 363);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(165, 42, 42));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);	
 		contentPane.setLayout(null);
@@ -81,15 +82,18 @@ public class SepetGUI extends JFrame {
 		
 		JPanel panel = new JPanel();
 		panel.setForeground(Color.BLACK);
-		panel.setBackground(Color.WHITE);
+		panel.setBackground(new Color(165, 42, 42));
 		xw.addTab("Sepet", null, panel, null);
 		panel.setLayout(null);
 		
 		JButton btnSatinal = new JButton("Siparisi Onayla");
+		btnSatinal.setBackground(new Color(100, 149, 237));
+		btnSatinal.setForeground(new Color(0, 0, 0));
 		btnSatinal.setBounds(594, 10, 125, 21);
 		panel.add(btnSatinal);
 		
 		JScrollPane xw_scrollSepet = new JScrollPane();
+		xw_scrollSepet.setBackground(new Color(255, 255, 255));
 		xw_scrollSepet.setBounds(0, 0, 584, 275);
 		panel.add(xw_scrollSepet);
 		
@@ -118,6 +122,8 @@ public class SepetGUI extends JFrame {
 	}
     						
 	JButton btnBack = new JButton("Geri");
+	btnBack.setBackground(new Color(100, 149, 237));
+	btnBack.setForeground(new Color(0, 0, 0));
 	btnBack.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent arg0) {
 			new Menu().setVisible(true);
@@ -135,8 +141,8 @@ public class SepetGUI extends JFrame {
 		Connection con6 = conn.connDb();
 		JEditorPane editorPane = new JEditorPane();
 		editorPane.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 16));
-		editorPane.setForeground(Color.BLACK);
-		editorPane.setBackground(Color.WHITE);
+		editorPane.setForeground(new Color(255, 255, 255));
+		editorPane.setBackground(new Color(165, 42, 42));
 		try {
 			Statement st6 = con6.createStatement();
             ResultSet rs = st6.executeQuery("SELECT SUM(yemekfiyati) AS fiyat FROM sepet");
@@ -150,6 +156,8 @@ public class SepetGUI extends JFrame {
 		panel.add(editorPane);
 		
 		JButton btnDelButton = new JButton("Sil");
+		btnDelButton.setBackground(new Color(100, 149, 237));
+		btnDelButton.setForeground(new Color(0, 0, 0));
 		btnDelButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Connection con2 = conn.connDb();
@@ -181,7 +189,7 @@ public class SepetGUI extends JFrame {
     btnSatinal.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent arg0) {
 			Connection con2 = conn.connDb();
-	        try {
+	        try {	        
 	        	Statement sorgu = con2.createStatement();
 	        	sorgu.executeUpdate("DELETE FROM sepet");
 	        	Helper.showMsg("fill2");

@@ -51,7 +51,7 @@ public class EtlerGUI extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 720, 420);
         xw = new JPanel();
-        xw.setBackground(Color.WHITE);
+        xw.setBackground(new Color(165, 42, 42));
         xw.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(xw);
         xw.setLayout(null);
@@ -63,7 +63,7 @@ public class EtlerGUI extends JFrame {
         	Statement st = c.createStatement();
             ResultSet rs = st.executeQuery("SELECT * FROM yemekler where kategori_id = '" + 1 + "'");
             int i = 0;
-            JToggleButton[] btnEtlist = new JToggleButton[50];
+            JToggleButton[] btnEtlist = new JToggleButton[50];        
             int[] dizi = new int[50];
             String[] dizi2 = new String[50];
             int h1 = 1;
@@ -79,7 +79,7 @@ public class EtlerGUI extends JFrame {
                 }
                 
                h = h1 * 10;
-                
+               btnEtlist[i].setBackground(new Color(100, 149, 237)); 
                btnEtlist[i].setBounds(w, h, 190, 88);
                 xw.add(btnEtlist[i]);
                final int p = i;
@@ -105,6 +105,7 @@ public class EtlerGUI extends JFrame {
         }
         
         JButton btnBackButton = new JButton("Geri");
+        btnBackButton.setBackground(new Color(100, 149, 237));
         btnBackButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
                 new Menu().setVisible(true);

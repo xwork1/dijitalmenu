@@ -51,7 +51,7 @@ public class SalataGUI extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 720, 420);
         xw = new JPanel();
-        xw.setBackground(Color.WHITE);
+        xw.setBackground(new Color(165, 42, 42));
         xw.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(xw);
         xw.setLayout(null);
@@ -79,7 +79,7 @@ public class SalataGUI extends JFrame {
                 }
                 
                h = h1 * 10;
-                
+               btnSalatalist[i].setBackground(new Color(100, 149, 237)); 
                btnSalatalist[i].setBounds(w, h, 190, 88);
                 xw.add(btnSalatalist[i]);
                final int p = i;
@@ -105,6 +105,7 @@ public class SalataGUI extends JFrame {
         }
         
         JButton btnBackButton = new JButton("Geri");
+        btnBackButton.setBackground(new Color(100, 149, 237));
         btnBackButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
                 new Menu().setVisible(true);

@@ -51,7 +51,7 @@ public class KampanyaGUI extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 720, 420);
         xw = new JPanel();
-        xw.setBackground(Color.WHITE);
+        xw.setBackground(new Color(165, 42, 42));
         xw.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(xw);
         xw.setLayout(null);
@@ -64,13 +64,13 @@ public class KampanyaGUI extends JFrame {
             ResultSet rs = st.executeQuery("SELECT * FROM kampanyalar");
             int i = 0;
             JToggleButton[] btnKampanyalist = new JToggleButton[50];
-            int[] dizi = new int[50];
+            double[] dizi = new double[50];
             String[] dizi2 = new String[50];
             int h1 = 1;
             int h,w=-190;
             while (rs.next()) {
             	btnKampanyalist[i] = new JToggleButton(rs.getString("kampanya_adi")+"("+rs.getInt("kampanya_fiyati")+" TL)");
-                dizi[i] = rs.getInt("kampanya_fiyati");
+                dizi[i] =  rs.getDouble("kampanya_fiyati");
                 dizi2[i] = rs.getString("kampanya_adi");
                 if (i % 3 == 0) {
                     System.out.println("ok");
@@ -79,7 +79,7 @@ public class KampanyaGUI extends JFrame {
                 }
                 
                h = h1 * 10;
-                
+               btnKampanyalist[i].setBackground(new Color(100, 149, 237)); 
                btnKampanyalist[i].setBounds(w, h, 190, 88);
                 xw.add(btnKampanyalist[i]);
                final int p = i;
@@ -104,6 +104,7 @@ public class KampanyaGUI extends JFrame {
         }
         
         JButton btnBackButton = new JButton("Geri");
+        btnBackButton.setBackground(new Color(100, 149, 237));
         btnBackButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
                 new Menu().setVisible(true);

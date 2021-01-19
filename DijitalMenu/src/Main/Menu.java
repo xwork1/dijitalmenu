@@ -41,6 +41,9 @@ import View.SepetGUI;
 import View.TatliGUI;
 import javax.swing.border.BevelBorder;
 import java.awt.ComponentOrientation;
+import java.awt.Dialog.ModalExclusionType;
+import java.awt.Window.Type;
+import java.awt.Dimension;
 
 
 public class Menu extends JFrame {
@@ -68,29 +71,33 @@ public class Menu extends JFrame {
 	@SuppressWarnings("deprecation")
 	public Menu() {
 		setResizable(false);
-		setTitle("Dijital Menu");
+		setAutoRequestFocus(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBackground(new Color(165, 42, 42));
+		setTitle("Dijital Menu");
 		setBounds(100, 100, 720, 420);
 		xw = new JPanel();
+		xw.setBackground(new Color(139, 0, 0));
 		xw.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(xw);
 		xw.setLayout(null);
 		
 		JTabbedPane xw_tabpanel = new JTabbedPane(JTabbedPane.TOP);
-		xw_tabpanel.setBounds(10, 10, 696, 372);
+		xw_tabpanel.setBounds(0, 10, 732, 397);
 		xw_tabpanel.setToolTipText("");
 		xw_tabpanel.setBackground(Color.WHITE);
 		xw.add(xw_tabpanel);
 		
 		JPanel xw_panel = new JPanel();
+		xw_panel.setBackground(new Color(165, 42, 42));
 		xw_panel.setToolTipText("");
 		xw_tabpanel.addTab("Menü", null, xw_panel, null);
-		xw_panel.setLayout(null);
 		
 		JButton eturunleri = new JButton("ET URUNLERI");
-		Image img = new ImageIcon(this.getClass().getResource("/et.png")).getImage();
-		eturunleri.setIcon(new ImageIcon(img));
 		eturunleri.setBounds(10, 10, 135, 127);
+		Image img = new ImageIcon(this.getClass().getResource("/et.png")).getImage();
+		xw_panel.setLayout(null);
+		eturunleri.setIcon(new ImageIcon(img));
 		eturunleri.setForeground(Color.BLACK);
 		xw_panel.add(eturunleri);
 		eturunleri.addActionListener(new ActionListener() {
@@ -102,26 +109,35 @@ public class Menu extends JFrame {
 		
 		
 		JButton btnGarson = new JButton("Garson Cagir");
+		btnGarson.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Helper.showMsg("Sayýn müþterimiz en kýsa sürede garsonumuz sizinle ilgilenecektir.");
+			}
+		});
 		btnGarson.setBounds(444, 10, 205, 42);
+		btnGarson.setBackground(new Color(100, 149, 237));
 		xw_panel.add(btnGarson);
 		
 		JButton btnPay = new JButton("Odeme Yap");
+		btnPay.setBounds(444, 62, 205, 42);
+		btnPay.setBackground(new Color(100, 149, 237));
 		btnPay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnPay.setBounds(444, 62, 205, 42);
 		xw_panel.add(btnPay);
 		
 		JButton btnWatch = new JButton("Siparis izle");
+		btnWatch.setBounds(444, 114, 205, 42);
+		btnWatch.setBackground(new Color(100, 149, 237));
 		btnWatch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnWatch.setBounds(444, 114, 205, 42);
 		xw_panel.add(btnWatch);
 		
 		JButton btnTatli = new JButton("TATLILAR");
+		btnTatli.setBounds(278, 10, 135, 127);
 		Image tatliimg = new ImageIcon(this.getClass().getResource("/tatlý.png")).getImage();
 		btnTatli.setIcon(new ImageIcon(tatliimg));
 		btnTatli.setForeground(Color.BLACK);
@@ -131,10 +147,10 @@ public class Menu extends JFrame {
 	            new TatliGUI().show();
 			}
 		});
-		btnTatli.setBounds(278, 10, 143, 127);
 		xw_panel.add(btnTatli);
 		
 		JButton btnDrink = new JButton("ICECEKLER");
+		btnDrink.setBounds(10, 136, 135, 127);
 		Image drinkimg = new ImageIcon(this.getClass().getResource("/icecek.png")).getImage();
 		btnDrink.setIcon(new ImageIcon(drinkimg));
 		btnDrink.setForeground(Color.BLACK);
@@ -144,10 +160,10 @@ public class Menu extends JFrame {
 	            new IcecekGUI().show();
 			}
 		});
-		btnDrink.setBounds(10, 136, 135, 127);
 		xw_panel.add(btnDrink);
 		
 		JButton btnAraSicak = new JButton("ARA SICAK");
+		btnAraSicak.setBounds(278, 136, 135, 127);
 		Image sicaklarimg = new ImageIcon(this.getClass().getResource("/arasýcak.png")).getImage();
 		btnAraSicak.setIcon(new ImageIcon(sicaklarimg));
 		btnAraSicak.addActionListener(new ActionListener() {
@@ -156,10 +172,10 @@ public class Menu extends JFrame {
             new ArasicakGUI().show();
 		}
 	});
-		btnAraSicak.setBounds(278, 136, 143, 127);
 		xw_panel.add(btnAraSicak);
 		
 		JButton btnSalata = new JButton("SALATALAR");
+		btnSalata.setBounds(144, 136, 135, 127);
 		Image salataimg = new ImageIcon(this.getClass().getResource("/salata.png")).getImage();
 		btnSalata.setIcon(new ImageIcon(salataimg));
 		btnSalata.setForeground(Color.BLACK);
@@ -169,14 +185,13 @@ public class Menu extends JFrame {
                 new SalataGUI().show();
 			}
 		});
-		btnSalata.setBounds(144, 136, 135, 127);
 		xw_panel.add(btnSalata);
 		
 		JButton btnDeniz = new JButton("DENIZ URUNLERI");
+		btnDeniz.setBounds(144, 10, 135, 127);
 		Image balikimg = new ImageIcon(this.getClass().getResource("/balýk.png")).getImage();
 		btnDeniz.setIcon(new ImageIcon(balikimg));
 		btnDeniz.setForeground(Color.BLACK);
-		btnDeniz.setBounds(144, 10, 135, 127);
 		xw_panel.add(btnDeniz);
 		btnDeniz.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -186,26 +201,29 @@ public class Menu extends JFrame {
         });
 		
 		JButton btnKmpny = new JButton("Kampanyalar");
+		btnKmpny.setBounds(444, 166, 205, 42);
+		btnKmpny.setBackground(new Color(100, 149, 237));
 		btnKmpny.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
                 new KampanyaGUI().show();
 			}
 		});
-		btnKmpny.setBounds(444, 166, 205, 42);
 		xw_panel.add(btnKmpny);
 		
 		JButton btnSepet = new JButton("Sepetim");
+		btnSepet.setBounds(444, 221, 205, 42);
+		btnSepet.setBackground(new Color(100, 149, 237));
 		btnSepet.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
                 new SepetGUI().show();
 			}
 		});
-		btnSepet.setBounds(444, 221, 205, 42);
 		xw_panel.add(btnSepet);
 		
 		JPanel panel = new JPanel();
+		panel.setBackground(new Color(165, 42, 42));
 		xw_tabpanel.addTab("Yetkili", null, panel, null);
 		panel.setLayout(null);
 		
@@ -221,6 +239,8 @@ public class Menu extends JFrame {
 		panel.add(fld_pass);
 		
 		JTextPane txt_username = new JTextPane();
+		txt_username.setForeground(new Color(255, 255, 255));
+		txt_username.setBackground(new Color(165, 42, 42));
 		txt_username.setBounds(118, 90, 97, 33);
 		txt_username.setEnabled(false);
 		txt_username.setEditable(false);
@@ -229,6 +249,8 @@ public class Menu extends JFrame {
 		panel.add(txt_username);
 		
 		JTextPane txt_pass = new JTextPane();
+		txt_pass.setForeground(new Color(255, 255, 255));
+		txt_pass.setBackground(new Color(165, 42, 42));
 		txt_pass.setBounds(166, 165, 49, 32);
 		txt_pass.setEnabled(false);
 		txt_pass.setEditable(false);
@@ -237,6 +259,7 @@ public class Menu extends JFrame {
 		panel.add(txt_pass);
 		
 		JButton btnLogin = new JButton("Giris Yap");
+		btnLogin.setForeground(new Color(100, 149, 237));
 			btnLogin.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					if(fld_user.getText().length() == 0 || fld_pass.getText().length() == 0) {

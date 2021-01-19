@@ -51,7 +51,7 @@ public class ArasicakGUI extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 720, 420);
         xw = new JPanel();
-        xw.setBackground(Color.WHITE);
+        xw.setBackground(new Color(165, 42, 42));
         xw.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(xw);
         xw.setLayout(null);
@@ -79,7 +79,7 @@ public class ArasicakGUI extends JFrame {
                 }
                 
                h = h1 * 10;
-                
+               btnSicaklarlist[i].setBackground(new Color(100, 149, 237)); 
                btnSicaklarlist[i].setBounds(w, h, 190, 88);
                 xw.add(btnSicaklarlist[i]);
                final int p = i;
@@ -90,8 +90,7 @@ public class ArasicakGUI extends JFrame {
                        try {
 						Statement st2 = c.createStatement();
 						st2.executeUpdate("INSERT INTO sepet (yemekadi,yemekfiyati) VALUES ('"+dizi2[p]+"','"+dizi[p]+"')");
-					} catch (SQLException e) {
-						// TODO Auto-generated catch block
+					} catch (SQLException e) {					
 						e.printStackTrace();
 					}
                        
@@ -105,6 +104,7 @@ public class ArasicakGUI extends JFrame {
         }
         
         JButton btnBackButton = new JButton("Geri");
+        btnBackButton.setBackground(new Color(100, 149, 237));
         btnBackButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
                 new Menu().setVisible(true);
