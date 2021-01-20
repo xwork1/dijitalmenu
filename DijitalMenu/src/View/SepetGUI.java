@@ -152,7 +152,7 @@ public class SepetGUI extends JFrame {
     		}
 		} catch (Exception e) {	
 		}
-		editorPane.setBounds(625, 69, 47, 33);
+		editorPane.setBounds(614, 69, 94, 33);
 		panel.add(editorPane);
 		
 		JButton btnDelButton = new JButton("Sil");

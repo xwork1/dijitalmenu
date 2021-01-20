@@ -315,11 +315,6 @@ public void guncelle1() throws SQLException {
 	btnUrunEkle_1.setBounds(605, 161, 74, 21);
 	panel_1.add(btnUrunEkle_1);
 	
-	JButton btnBack_1 = new JButton("Geri");
-	btnBack_1.setBounds(605, 246, 74, 19);
-	panel_1.add(btnBack_1);
-	
-	
 	btnUrunEkle_1.addActionListener(new ActionListener(){
     public void actionPerformed(ActionEvent arg0) {
     DBConnection db2 = new DBConnection();
