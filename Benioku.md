@@ -8,5 +8,7 @@ Restoranlar için Dijital Menü 'Java' Uygulamasıdır.
 +Ürünleri sepete gönderme ve sepette listeleme eklendi.
 +Fiyatların "TL" değerleri gözükmeme hatası giderildi.
 
+20.01.2021 ---> Bir kaç farkedilen küçük buglar düzeltildi.
+
 
 @author xwork1
